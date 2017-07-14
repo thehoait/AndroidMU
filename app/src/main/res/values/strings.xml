@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AndroidMU</string>
+    <string name="valid_error_retrofit_network_error">Netword Error</string>
+    <string name="song_id">{\"id\":\"%s\"}</string>
 </resources>
