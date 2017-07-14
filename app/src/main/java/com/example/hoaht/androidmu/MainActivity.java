@@ -29,7 +29,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
-    private List<Song> mListSong = new ArrayList<>();
+    private final List<Song> mListSong = new ArrayList<>();
 
     @AfterViews
     void init() {
@@ -53,21 +53,17 @@ public class MainActivity extends AppCompatActivity {
             for (Element element : playList) {
                 songList.add(element.attr("data-id"));
             }
-            for (String songId : songList) {
-                Log.d(TAG, "songID: " + songId);
-                getListSong(songId);
-            }
+            getListSong(songList.get(0));
         }
     }
 
     private void getListSong(String songId) {
         String ulrSongId = getString(R.string.song_id, songId);
-        ApiClient.call().getSongDetail(ulrSongId).enqueue(new ApiCallback<Song>() {
+        ApiClient.call().getSongDetail(ulrSongId).enqueue(new ApiCallback<Song>(this) {
             @Override
             public void success(Song song) {
                 Log.d(TAG, "success: ");
                 mListSong.add(song);
-                Log.d(TAG, "success: " + mListSong.size());
             }
 
             @Override

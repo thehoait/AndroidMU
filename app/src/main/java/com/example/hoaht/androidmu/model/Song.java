@@ -2,6 +2,7 @@ package com.example.hoaht.androidmu.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import lombok.Getter;
 import lombok.Value;
 
 /**
@@ -18,6 +19,10 @@ public class Song {
     @SerializedName("link_download")
     private LinkDownload linkDownload;
 
+    /**
+     * LinkDownload
+     */
+    @Getter
     private static class LinkDownload {
         @SerializedName("128")
         private String link128;

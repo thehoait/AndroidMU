@@ -1,5 +1,6 @@
 package com.example.hoaht.androidmu.api.core;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
@@ -28,7 +29,10 @@ public abstract class ApiCallback<T> implements Callback<T> {
 
     public abstract void failure(ApiError apiError);
 
-    public ApiCallback() {
+    private final Context mContext;
+
+    public ApiCallback(Context context) {
+        mContext = context;
     }
 
     @Override
@@ -42,11 +46,11 @@ public abstract class ApiCallback<T> implements Callback<T> {
                     failure(new ApiError(errorMessage.getCode(), errorMessage.getMessage()));
                 } else {
                     failure(new ApiError(HttpURLConnection.HTTP_CLIENT_TIMEOUT,
-                            ApiClient.getInstance().getContext().getString(R.string.valid_error_retrofit_network_error)));
+                            mContext.getString(R.string.valid_error_retrofit_network_error)));
                 }
             } catch (IOException e) {
                 failure(new ApiError(HttpURLConnection.HTTP_CLIENT_TIMEOUT,
-                        ApiClient.getInstance().getContext().getString(R.string.valid_error_retrofit_network_error)));
+                        mContext.getString(R.string.valid_error_retrofit_network_error)));
             }
         }
     }
@@ -63,6 +67,6 @@ public abstract class ApiCallback<T> implements Callback<T> {
     @Override
     public void onFailure(@NonNull Call<T> call, @NonNull Throwable t) {
         failure(new ApiError(HttpURLConnection.HTTP_CLIENT_TIMEOUT,
-                ApiClient.getInstance().getContext().getString(R.string.valid_error_retrofit_network_error)));
+                mContext.getString(R.string.valid_error_retrofit_network_error)));
     }
 }

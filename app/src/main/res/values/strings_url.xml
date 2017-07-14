@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="base_url">http://api.mp3.zing.vn/api/mobile/song/</string>
-    <string name="url_host1">http://mp3.zing.vn/album/Top-100-Bai-Hat-Nhac-Tre-Hay-Nhat-Various-Artists/</string>
-    <string name="url_host">https://www.yahoo.com/news/rss/world/</string>
 </resources>

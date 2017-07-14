@@ -1,7 +1,5 @@
 package com.example.hoaht.androidmu.api.core;
 
-import android.content.Context;
-
 import com.example.hoaht.androidmu.BuildConfig;
 import com.example.hoaht.androidmu.api.ApiService;
 import com.google.gson.FieldNamingPolicy;
@@ -24,7 +22,6 @@ public class ApiClient {
     private static final int TIMEOUT_CONNECTION = 15000;
 
     private static ApiClient sApiClient;
-    private static Context sContext;
     /**
      * ApiService service
      */
@@ -46,7 +43,6 @@ public class ApiClient {
     }
 
     public void init(final ApiConfig apiConfig) {
-        sContext = apiConfig.getContext();
         // initialize OkHttpClient
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(BuildConfig.BUILD_TYPE.equals("release") ? HttpLoggingInterceptor.Level.NONE : HttpLoggingInterceptor.Level.BODY);
@@ -72,9 +68,5 @@ public class ApiClient {
 
     Retrofit getRetrofit() {
         return mRetrofit;
-    }
-
-    Context getContext() {
-        return sContext;
     }
 }

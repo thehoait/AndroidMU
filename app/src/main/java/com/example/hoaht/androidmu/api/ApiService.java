@@ -1,6 +1,5 @@
 package com.example.hoaht.androidmu.api;
 
-import com.example.hoaht.androidmu.api.response.DataResponse;
 import com.example.hoaht.androidmu.model.Song;
 
 import retrofit2.Call;
@@ -16,10 +15,4 @@ public interface ApiService {
 
     @GET("getsonginfo")
     Call<Song> getSongDetail(@Query("requestdata") String id);
-
-    @GET("ZWZB969E.html")
-    Call<DataResponse> fetchData1();
-
-    @GET(".")
-    Call<DataResponse> fetchData();
 }
